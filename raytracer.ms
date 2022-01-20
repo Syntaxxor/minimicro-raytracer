@@ -19,13 +19,13 @@ end function
 
 trace_sphere = function(r0, rd, s0, sr)
 	s0_r0 = r0.sub(s0)
-	b = 2.0 * rd.dot(s0_r0)
+	b = rd.dot(s0_r0)
 	c = s0_r0.dot(s0_r0) - (sr * sr)
 	
-	if b*b - 4.0*c < 0.0 then
+	if b*b - c < 0.0 then
 		return -1.0
 	end if
-	return (-b - sqrt((b*b) - 4.0*c))/2.0
+	return (-b - sqrt(b * b - c))
 end function
 
 trace_plane = function(r0, rd, p0, pn)
