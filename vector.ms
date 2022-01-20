@@ -24,5 +24,5 @@ Vector.length = function()
 	return sqrt(self.dot(self))
 end function
 Vector.normalized = function()
-	return self.scale(self.length())
+	return self.scale(1.0 / self.length())
 end function

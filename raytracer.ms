@@ -18,14 +18,14 @@ max = function(a, b)
 end function
 
 trace_sphere = function(r0, rd, s0, sr)
-	a = rd.dot(rd)
 	s0_r0 = r0.sub(s0)
 	b = 2.0 * rd.dot(s0_r0)
 	c = s0_r0.dot(s0_r0) - (sr * sr)
-	if b*b - 4.0*a*c < 0.0 then
+	
+	if b*b - 4.0*c < 0.0 then
 		return -1.0
 	end if
-	return (-b - sqrt((b*b) - 4.0*a*c))/(2.0*a)
+	return (-b - sqrt((b*b) - 4.0*c))/2.0
 end function
 
 trace_plane = function(r0, rd, p0, pn)
@@ -89,7 +89,7 @@ end function
 clear
 r0 = vector.newVector(0.0, 0.0, 0.0)
 sun_dir = vector.newVector(0.5, 1.0, -0.75).normalized
-gfx.scale = 2.0
+gfx.scale = 1.0
 w = gfx.width / gfx.scale
 h = gfx.height / gfx.scale
 aspect = w / h
